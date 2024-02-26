@@ -1,0 +1,30 @@
+--- Truong hop dac thu ---
+    // text-align: center;
+    // line-height: 60px;
+
+
+--- Hidden scrollbar ---
+    // overflow-y: scroll;
+    // -ms-overflow-style: none;
+    // scrollbar-width: none;
+
+
+    &::-webkit-scrollbar 
+{
+    //  display: none;
+    //  /* Safari and Chrome */
+}
+
+
+--- Text ---
+    // white-space: nowrap; // ngan xuong dong
+    // overflow: hidden; // an noi dung vuot ra ngoai
+    // text-overflow: ellipsis; // hien thi 3 cham khi vuot ra ngoai
+    //&nbsp; : Tao khoang cach giua icon va chu
+
+
+--- INPUT ---
+    // box-sizing: border-box;
+    // -webkit-box-sizing: border-box;
+    // -moz-box-sizing: border-box;
+
