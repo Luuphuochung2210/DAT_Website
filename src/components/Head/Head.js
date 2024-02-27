@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Head.scss"
 import { MdOutlineMenu } from "react-icons/md";
 import { IoIosNotificationsOutline } from "react-icons/io";
@@ -9,8 +9,22 @@ import { FiActivity } from "react-icons/fi";
 import { FiBarChart } from "react-icons/fi";
 import { MdErrorOutline } from "react-icons/md";
 import { IoIosPersonAdd } from "react-icons/io";
+import { IoIosLogOut } from "react-icons/io";
+import { CiSettings } from "react-icons/ci";
+import { FiBook } from "react-icons/fi";
+import { RiCodeFill } from "react-icons/ri";
+import { IoDocumentTextOutline } from "react-icons/io5";
 
 export default function Head() {
+    const [docs, setDocs] = useState(false);
+    const [alert, setAlert] = useState(false);
+    const [mail, setMail] = useState(false);
+    const [ava, setAva] = useState(false);
+
+    const alert_icon = useRef()
+    const alert_content = useRef()
+
+    // Handle Open/Close Sidebar 
     const handleMenu = (e) => {
         const sideBar = document.getElementById('sidebar')
 
@@ -19,38 +33,62 @@ export default function Head() {
         } else {
             sideBar.style.width = '240px';
         }
-
-        // Cach 2
-        // if (sideBar.style.display === 'none') {
-        //     sideBar.style.display = 'block'
-        // } else {
-        //     sideBar.style.display = 'none'
-        // }
-
-        sideBar.style.transition = '0.4s ease-in-out'
+        sideBar.style.transition = '0.25s ease-in-out'
     }
 
-
-    const [alert, setAlert] = useState(false);
-
-    const handleAlert = () => {
-        if (alert === true) {
-            setAlert(false)
+    //Handle Document DropDown
+    const handleDocs = () => {
+        if (docs === true) {
+            setDocs(false);
         } else {
-            setAlert(true)
+            setDocs(true);
+            setAlert(false);
+            setMail(false);
+            setAva(false);
         }
     }
 
-    const handleMail = (e) => {
-        const mail = document.getElementById('mail');
-
-        if (mail.style.display === 'none') {
-            mail.style.display = 'block';
-        } else {
-            mail.style.display = 'none';
+    // Handle Dropdown Alert
+    let handleAlert = (e) => {
+        if (!alert_icon.current.contains(e.target)) {
+            if (!alert_content.current.contains(e.target)) {
+                setAlert(false)
+            }
         }
     }
 
+    // Handle Dropdown Mail
+    const handleMail = () => {
+        if (mail === true) {
+            setMail(false);
+        } else {
+            setMail(true);
+            setDocs(false);
+            setAlert(false);
+            setAva(false);
+        }
+    }
+
+    // Handle Dropdown Profile
+    const handleAva = () => {
+        if (ava === true) {
+            setAva(false);
+        } else {
+            setAva(true);
+            setDocs(false);
+            setAlert(false);
+            setMail(false);
+        }
+    }
+
+    useEffect(() => {
+        document.addEventListener("mousedown", (e) => handleAlert(e))
+        return (
+            document.removeEventListener("mousedown", (e) => handleAlert(e))
+        )
+    }, [])
+
+    // Handle Outside Click to close the DropDown
     return (
         <div className="DAT_Head">
             <button className="DAT_Head_Left" onClick={() => { handleMenu() }}>
@@ -60,35 +98,86 @@ export default function Head() {
             <div className="DAT_Head_Logo">
                 DAT GROUP
             </div>
-
-            {/* <span>HEllo</span> */}
             <div className="DAT_Head_Center">
                 <div className="DAT_Head_Center_Search">
-                    <input placeholder="Search.."></input>
+                    <input placeholder="Search.."
+                    ></input>
                     <IoSearchOutline color="grey" size={20} />
                 </div>
             </div>
 
-            <button className="DAT_Head_Doc">
-                Documentation <MdKeyboardArrowRight color="grey" size={16} />
+            <button className="DAT_Head_Doc" onClick={() => { handleDocs() }}>
+                Documentation
+                <div style={{
+                    transform: docs ? "rotate(90deg)" : null, transition: '0.2s ease-in-out'
+                }}>
+                    <MdKeyboardArrowRight
+                        color="grey"
+                        size={16}
+                    />
+                </div>
             </button>
 
-            <button className="DAT_Head_Right" onClick={() => { handleAlert() }}>
+            <button className="DAT_Head_Right" onClick={() => setAlert(!alert)} ref={alert_icon}
+            >
                 <IoIosNotificationsOutline color="grey" size={16} />
             </button>
 
-            <button className="DAT_Head_Right" onClick={() => { handleMail() }}>
+            <button className="DAT_Head_Right" onClick={() => { handleMail() }} >
                 <CiMail color="grey" size={16} />
             </button>
 
-            <button className="DAT_Head_Ava">
+            <button className="DAT_Head_Ava" onClick={() => { handleAva() }} >
                 <img
-                    src="https://sb-admin-pro.startbootstrap.com/assets/img/illustrations/profiles/profile-1.png" alt="">
+                    src="https://sb-admin-pro.startbootstrap.com/assets/img/illustrations/profiles/profile-2.png" alt="">
                 </img>
             </button>
 
-            {/* NOTIFICATION SECTION */}
-            {alert ? (<div className="DAT_Head_Notification">
+            {/* DROPDOWN DOCUMENTATION */}
+            {docs ? (<div className="DAT_Head_Docs" >
+                <div className="DAT_Head_Docs_Card">
+                    <a href="#!" className="DAT_Head_Docs_Card_Body">
+                        <div className='DAT_Head_Docs_Card_Body_Icon'>
+                            <FiBook color="blue" size={18} />
+                        </div>
+                        <div className='DAT_Head_Docs_Card_Body_Text'>
+                            <small> Documentation </small>
+                            <div className='DAT_Head_Docs_Card_Body_Text_Mes'>
+                                Usage instructions and reference
+                            </div>
+                        </div>
+                    </a>
+                    <div className="DAT_Head_Docs_Card_Divider"></div>
+                    <a href="#!" className="DAT_Head_Docs_Card_Body">
+                        <div className='DAT_Head_Docs_Card_Body_Icon'>
+                            <RiCodeFill color="blue" size={18} />
+                        </div>
+                        <div className='DAT_Head_Docs_Card_Body_Text'>
+                            <small> Components </small>
+                            <div className='DAT_Head_Docs_Card_Body_Text_Mes'>
+                                Code snippets and reference
+                            </div>
+                        </div>
+                    </a>
+                    <div className="DAT_Head_Docs_Card_Divider"></div>
+                    <a href="#!" className="DAT_Head_Docs_Card_Body">
+                        <div className='DAT_Head_Docs_Card_Body_Icon'>
+                            <IoDocumentTextOutline color="blue" size={18} />
+                        </div>
+                        <div className='DAT_Head_Docs_Card_Body_Text'>
+                            <small> Changelog </small>
+                            <div className='DAT_Head_Docs_Card_Body_Text_Mes'>
+                                Updates and Changes
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>) : (<></>)}
+
+
+            {/* NOTIFICATION DROPDOWN */}
+            <div className="DAT_Head_Notification" style={{ display: alert ? "block" : "none" }} ref={alert_content}
+            >
                 <div className="DAT_Head_Notification_Card">
                     <div className="DAT_Head_Notification_Card_Head">
                         <IoIosNotificationsOutline color="white" size={16} />
@@ -147,11 +236,10 @@ export default function Head() {
                         <span> View All Alerts </span>
                     </a>
                 </div>
-            </div>) :
-                (<></>)}
+            </div>
 
-            {/* MAIL SECTION */}
-            <div className="DAT_Head_Mail" id="mail" >
+            {/* MAIL DROPDOWN */}
+            {mail ? (<div className="DAT_Head_Mail" id="mail" >
                 <div className="DAT_Head_Mail_Card">
                     <div className="DAT_Head_Mail_Card_Head">
                         <CiMail color="white" size={18} />
@@ -210,7 +298,37 @@ export default function Head() {
                         <span> Read All Messages </span>
                     </a>
                 </div>
-            </div >
+            </div >) : (<></>)}
+
+            {/* AVATAR DROPDOWN */}
+            {ava ? (<div className="DAT_Head_DropAva">
+                <div className="DAT_Head_DropAva_Card">
+                    <div className="DAT_Head_DropAva_Card_Head">
+                        <div className='DAT_Head_DropAva_Card_Head_Icon'>
+                            <img src="https://sb-admin-pro.startbootstrap.com/assets/img/illustrations/profiles/profile-2.png" alt='' />
+                        </div>
+                        <div className="DAT_Head_DropAva_Card_Name">
+                            <span> Valarie Luna </span>
+                            <small> vluna@aol.com </small>
+                        </div>
+                    </div>
+
+                    <div className="DAT_Head_DropAva_Card_Divider"></div>
+
+                    <div className="DAT_Head_DropAva_Card_Body">
+                        <div className='DAT_Head_DropAva_Card_Body_Item'>
+                            <CiSettings size={18} color="black" />
+                            <span>&nbsp;Account </span>
+                        </div>
+
+                        <div className='DAT_Head_DropAva_Card_Body_Item'>
+                            <IoIosLogOut size={18} color="black" />
+                            <span>&nbsp;Logout </span>
+                        </div>
+                    </div>
+                </div>
+            </div >) : (<></>)}
+
         </div >
 
     )

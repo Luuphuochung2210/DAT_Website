@@ -71,16 +71,18 @@ const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 export default function DashBoard() {
     const [test, setTest] = useState(13)
 
-    const [title, setTitle] = useState('Giám sát')
+    const [title, setTitle] = useState('Dashboard')
 
-    // function handleClick2(e) {
-    //     console.log('Hello')
-    //     setTest(test + 1);
-    // }
     const handleClick2 = (e) => {
-        console.log('Hello')
         setTest(test + 1);
     }
+
+    //Library bi loi nen chan thong bao
+    // const error = console.error;
+    // console.error = (...args: any) => {
+    //     if (/defaultProps/.test(args[0])) return;
+    //     error(...args);
+    // };
 
     return (
         <div className="DAT_DashBoard">
@@ -160,8 +162,8 @@ export default function DashBoard() {
                                             }}
                                         >
                                             <CartesianGrid strokeDasharray="3 3" />
-                                            <XAxis dataKey="name" axisLine={false} tickLine={false} />
-                                            <YAxis unit='$' axisLine={false} tickLine={false} />
+                                            {/* <XAxis dataKey="name" axisLine={false} tickLine={false} />
+                                            <YAxis unit='$' axisLine={false} tickLine={false} /> */}
                                             <Tooltip />
                                             <Area type="monotone" dataKey="Earnings" stroke="#0061f2" strokeWidth={2.5} fill="#dae7fb " unit='$' dot={{ stroke: '#0061f2  ', strokeWidth: 8, r: 2, strokeDasharray: '' }} />
                                         </AreaChart>

@@ -6,7 +6,7 @@ import "./index.scss";
 
 function App() {
   return (
-    <div>
+    <div >
       <Head />
       <div className="DAT_Container">
         <Sidebar />

@@ -1,0 +1,95 @@
+--- Truong hop dac thu ---
+    // text-align: center;
+    // line-height: 60px;
+
+
+--- Hidden scrollbar ---
+    // overflow-y: scroll;
+    // -ms-overflow-style: none;
+    // scrollbar-width: none;
+
+
+    &::-webkit-scrollbar 
+{
+    //  display: none;
+    //  /* Safari and Chrome */
+}
+
+
+--- Text ---
+    // white-space: nowrap; // ngan xuong dong
+    // overflow: hidden; // an noi dung vuot ra ngoai
+    // text-overflow: ellipsis; // hien thi 3 cham khi vuot ra ngoai
+    //&nbsp; : Tao khoang cach giua icon va chu
+
+
+--- INPUT ---
+    // box-sizing: border-box;
+    // -webkit-box-sizing: border-box;
+    // -moz-box-sizing: border-box;
+
+
+---------------------------------------------------------------------
+                            JAVASCRIPT
+Dùng được trong nhiều ngôn ngữ ('document') :
+
+VD :
+ const handleMenu = (e) => {
+        const sideBar = document.getElementById('sidebar')
+
+        if (sideBar.style.width === '240px') {
+            sideBar.style.width = '0px';
+        } else {
+            sideBar.style.width = '240px';
+        }
+
+        // Cach 2
+        // if (sideBar.style.display === 'none') {
+        //     sideBar.style.display = 'block'
+        // } else {
+        //     sideBar.style.display = 'none'
+        // }
+
+        sideBar.style.transition = '0.4s ease-in-out'
+    }
+
+
+Arrow Function trong onClick? :
+    <button className="DAT_Head_Left" onClick={() => { handleMenu() }}> </button>
+
+
+Sử dụng useState :
+    < "alert đầu tiên là tên biến, setAlert là function chuyển biến" >
+
+Ví dụ: 
+    const [alert, setAlert] = useState(false);
+    const handleAlert = () => {
+        if (alert === true) {
+            setAlert(false)
+        } else {
+            setAlert(true)
+        }
+    }
+
+
+Sử dụng useState để style dưới thẻ elements.
+
+    <div style={{
+        transform: docs ? "rotate(90deg)" : null, transition: '0.2s ease-in-out'}}>
+        <MdKeyboardArrowRight
+            color="grey"
+            size={16}/>
+    </div>
+
+
+1 cách khác để sử dụng :
+    // Handle Dropdown Mail
+    // const handleMail = (e) => {
+    //     const mail = document.getElementById('mail');
+
+    //     if (mail.style.display === 'block') {
+    //         mail.style.display = 'none';
+    //     } else {
+    //         mail.style.display = 'block';
+    //     }
+    // }

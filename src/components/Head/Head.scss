@@ -9,7 +9,6 @@
     color: black;
     overflow: hidden;
     display: flex;
-    // gap: 5px;
     padding: 8px 0px;
     box-sizing: border-box;
     box-shadow: 3px 3px 10px rgb(175, 174, 174, 0.5);
@@ -127,7 +126,7 @@
         justify-content: center;
         height: 44px;
         width: 44px;
-        margin-right: 24px;
+        margin-right: 34px;
         outline: none;
         border: none;
         background-color: white;
@@ -150,6 +149,77 @@
         }
     }
 
+    //Dropdown Documentation
+    &_Docs {
+        position: fixed;
+        background-color: white;
+        top: 65px;
+        right: 210px;
+        width: 320px;
+        height: 32%;
+        border-radius: 8px;
+        overflow-y: scroll;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        box-shadow: 0 0.15rem 1.75rem 0 rgba(33, 40, 50, 0.15);
+
+        &_Card {
+            &_Divider {
+                border-bottom: 2px rgb(128, 128, 128, 0.2) solid;
+            }
+
+            &_Body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 16px;
+                white-space: nowrap;
+                box-sizing: border-box;
+                text-decoration: none;
+                color: #1e242d;
+
+                &:hover {
+                    color: #1e242d;
+                    background-color: #e2ebf9;
+                }
+
+                &_Icon {
+                    margin-right: 20px;
+                    height: 41px;
+                    width: 50px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: #e2ebf9;
+                    border-radius: 50%;
+                }
+
+                &_Text {
+                    display: flex;
+                    justify-content: center;
+                    align-items: start;
+                    flex-direction: column;
+                    width: 250px;
+
+
+                    & small {
+                        color: #a7aeb8;
+                        font-size: 12px;
+                    }
+
+                    &_Mes {
+                        font-size: 15px;
+                        width: 200px;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+                }
+            }
+        }
+    }
+
+    //DropDown Notification
     &_Notification {
         position: fixed;
         background-color: white;
@@ -161,6 +231,7 @@
         overflow-y: scroll;
         -ms-overflow-style: none;
         scrollbar-width: none;
+        box-shadow: 0 0.15rem 1.75rem 0 rgba(33, 40, 50, 0.15);
 
         &_Card {
 
@@ -273,6 +344,7 @@
         }
     }
 
+    //DropDown Mail 
     &_Mail {
         position: fixed;
         background-color: white;
@@ -284,6 +356,7 @@
         overflow-y: scroll;
         -ms-overflow-style: none;
         scrollbar-width: none;
+        box-shadow: 0 0.15rem 1.75rem 0 rgba(33, 40, 50, 0.15);
 
         &_Card {
 
@@ -402,6 +475,109 @@
                 color: #a7aeb8;
                 height: 43px;
 
+            }
+        }
+    }
+
+    // Dropdown Avatar 
+    &_DropAva {
+        position: fixed;
+        background-color: white;
+        top: 65px;
+        right: 35px;
+        width: 235px;
+        height: 140px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 0.15rem 1.75rem 0 rgba(33, 40, 50, 0.15);
+
+        &_Card {
+            &_Head {
+                display: flex;
+                align-items: center;
+                background-color: white;
+                color: black;
+                height: 50px;
+                margin-bottom: 10px;
+                padding-left: 24px;
+                box-sizing: border-box;
+                text-decoration: none;
+                color: #1e242d;
+
+                &_Icon {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 40px;
+                    width: 40px;
+                    margin-right: 24px;
+                    outline: none;
+                    border: none;
+                    background-color: white;
+                    border-radius: 50%;
+                    overflow: hidden;
+                    cursor: pointer;
+
+                    & img {
+                        min-width: 44px;
+                        min-height: 44px;
+                    }
+                }
+            }
+
+            &_Divider {
+                border-bottom: 2px rgb(128, 128, 128, 0.2) solid;
+            }
+
+            &_Name {
+                & small {
+                    color: #69707a;
+                    font-size: 0.75rem;
+                    max-width: 10rem;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+
+                & span {
+                    color: #212832;
+                    font-weight: 500;
+                    font-size: 0.9rem;
+                    max-width: 10rem;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+
+            &_Body {
+
+                &_Item {
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    color: black;
+                    padding-left: 20px;
+                    height: 38px;
+
+                    & span {
+                        color: #212832;
+                        font-size: 14px;
+                        font-weight: 400;
+                        cursor: pointer;
+                    }
+
+                    &:hover {
+                        color: #1e242d;
+                        background-color: #e0e5ec;
+
+                        &:last-child {
+                            border-bottom-left-radius: 5px;
+                            border-bottom-right-radius: 5px;
+                        }
+                    }
+                }
             }
         }
     }
