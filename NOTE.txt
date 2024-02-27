@@ -93,3 +93,32 @@ Sử dụng useState để style dưới thẻ elements.
     //         mail.style.display = 'block';
     //     }
     // }
+
+Click Outside để thoát DropDown của a Lộc 
+
+        ---Function---
+
+    const alert_icon = useRef()
+    const alert_content = useRef()
+    // let handleAlert = (e) => {
+    //     if (!alert_icon.current.contains(e.target)) {
+    //         if (!alert_content.current.contains(e.target)) {
+    //             setAlert(false)
+    //         }
+    //     }
+    // }
+    
+    // useEffect(() => {
+    //     document.addEventListener("mousedown", (e) => handleAlert(e))
+    //     return (
+    //         document.removeEventListener("mousedown", (e) => handleAlert(e))
+    //     )
+    // }, [])
+
+        ---Content---
+        
+    <button className="DAT_Head_Right" onClick={() => setAlert(!alert)} ref={alert_icon}>
+        <IoIosNotificationsOutline color="grey" size={16} />
+    </button>
+
+    <div className="DAT_Head_Notification" style={{ display: alert ? "block" : "none" }} ref={alert_content}

@@ -21,8 +21,7 @@ export default function Head() {
     const [mail, setMail] = useState(false);
     const [ava, setAva] = useState(false);
 
-    const alert_icon = useRef()
-    const alert_content = useRef()
+    const dropdownRef = useRef();
 
     // Handle Open/Close Sidebar 
     const handleMenu = (e) => {
@@ -49,11 +48,14 @@ export default function Head() {
     }
 
     // Handle Dropdown Alert
-    let handleAlert = (e) => {
-        if (!alert_icon.current.contains(e.target)) {
-            if (!alert_content.current.contains(e.target)) {
-                setAlert(false)
-            }
+    const handleAlert = () => {
+        if (mail === true) {
+            setAlert(false);
+        } else {
+            setAlert(true);
+            setDocs(false);
+            setMail(false);
+            setAva(false);
         }
     }
 
@@ -69,7 +71,7 @@ export default function Head() {
         }
     }
 
-    // Handle Dropdown Profile
+    // Handle Dropdown Avatar
     const handleAva = () => {
         if (ava === true) {
             setAva(false);
@@ -81,14 +83,29 @@ export default function Head() {
         }
     }
 
-    useEffect(() => {
-        document.addEventListener("mousedown", (e) => handleAlert(e))
-        return (
-            document.removeEventListener("mousedown", (e) => handleAlert(e))
-        )
-    }, [])
+    //Close all dropdown
+    const closeAllDropdowns = () => {
+        setDocs(false);
+        setAlert(false);
+        setMail(false);
+        setAva(false);
+    };
 
-    // Handle Outside Click to close the DropDown
+    // Handle Click Outside to close DropDown Table
+    useEffect(() => {
+        const handleClickOutside = (e) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+                closeAllDropdowns();
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
+
     return (
         <div className="DAT_Head">
             <button className="DAT_Head_Left" onClick={() => { handleMenu() }}>
@@ -118,8 +135,7 @@ export default function Head() {
                 </div>
             </button>
 
-            <button className="DAT_Head_Right" onClick={() => setAlert(!alert)} ref={alert_icon}
-            >
+            <button className="DAT_Head_Right" onClick={() => (handleAlert())}>
                 <IoIosNotificationsOutline color="grey" size={16} />
             </button>
 
@@ -134,7 +150,7 @@ export default function Head() {
             </button>
 
             {/* DROPDOWN DOCUMENTATION */}
-            {docs ? (<div className="DAT_Head_Docs" >
+            {docs && (<div className="DAT_Head_Docs" ref={dropdownRef} >
                 <div className="DAT_Head_Docs_Card">
                     <a href="#!" className="DAT_Head_Docs_Card_Body">
                         <div className='DAT_Head_Docs_Card_Body_Icon'>
@@ -172,12 +188,11 @@ export default function Head() {
                         </div>
                     </a>
                 </div>
-            </div>) : (<></>)}
+            </div>)}
 
 
             {/* NOTIFICATION DROPDOWN */}
-            <div className="DAT_Head_Notification" style={{ display: alert ? "block" : "none" }} ref={alert_content}
-            >
+            {alert && (<div className="DAT_Head_Notification" ref={dropdownRef}>
                 <div className="DAT_Head_Notification_Card">
                     <div className="DAT_Head_Notification_Card_Head">
                         <IoIosNotificationsOutline color="white" size={16} />
@@ -236,10 +251,10 @@ export default function Head() {
                         <span> View All Alerts </span>
                     </a>
                 </div>
-            </div>
+            </div>)}
 
             {/* MAIL DROPDOWN */}
-            {mail ? (<div className="DAT_Head_Mail" id="mail" >
+            {mail && (<div className="DAT_Head_Mail" id="mail" ref={dropdownRef} >
                 <div className="DAT_Head_Mail_Card">
                     <div className="DAT_Head_Mail_Card_Head">
                         <CiMail color="white" size={18} />
@@ -298,10 +313,10 @@ export default function Head() {
                         <span> Read All Messages </span>
                     </a>
                 </div>
-            </div >) : (<></>)}
+            </div >)}
 
             {/* AVATAR DROPDOWN */}
-            {ava ? (<div className="DAT_Head_DropAva">
+            {ava && (<div className="DAT_Head_DropAva" ref={dropdownRef}>
                 <div className="DAT_Head_DropAva_Card">
                     <div className="DAT_Head_DropAva_Card_Head">
                         <div className='DAT_Head_DropAva_Card_Head_Icon'>
@@ -327,7 +342,7 @@ export default function Head() {
                         </div>
                     </div>
                 </div>
-            </div >) : (<></>)}
+            </div >)}
 
         </div >
 

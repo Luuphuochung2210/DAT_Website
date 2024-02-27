@@ -86,7 +86,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
-
         outline: none;
         border: none;
         background-color: white;
@@ -156,7 +155,7 @@
         top: 65px;
         right: 210px;
         width: 320px;
-        height: 32%;
+        height: 223px;
         border-radius: 8px;
         overflow-y: scroll;
         -ms-overflow-style: none;
@@ -226,7 +225,7 @@
         top: 60px;
         right: 150px;
         width: 296px;
-        height: 48%;
+        height: 340px;
         border-radius: 3px;
         overflow-y: scroll;
         -ms-overflow-style: none;
@@ -351,7 +350,7 @@
         top: 60px;
         right: 85px;
         width: 296px;
-        height: 48%;
+        height: 340px;
         border-radius: 3px;
         overflow-y: scroll;
         -ms-overflow-style: none;
@@ -372,7 +371,6 @@
                     font-size: 16px;
                     font-weight: 600;
                 }
-
             }
 
             &_Body {
@@ -483,10 +481,10 @@
     &_DropAva {
         position: fixed;
         background-color: white;
-        top: 65px;
+        top: 62px;
         right: 35px;
         width: 235px;
-        height: 140px;
+        height: 145px;
         border-radius: 5px;
         display: flex;
         justify-content: center;
