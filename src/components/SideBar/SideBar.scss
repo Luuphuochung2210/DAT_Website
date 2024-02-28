@@ -1,46 +1,103 @@
 .DAT_Sidebar {
+    height: 100%;
     position: relative;
     width: 240px;
     background-color: white;
-    overflow: hidden;
     padding-top: 65px;
     box-shadow: 3px 3px 10px rgb(175, 174, 174, 0.5);
-    z-index: 10;
+    overflow: hidden;
+    box-sizing: border-box;
+    
+    &_Center{    
+        height: 85%;   
+        margin: 10px; 
+        overflow-y: scroll;
+        scrollbar-width: none;
 
-    &_Tab {
+        &_Tab {
+        height: 40px;
+        padding: 16px 10px 0px 0px;
         position: relative;
         display: flex;
-        padding: 12px 16px;
+        align-items: center;
         font-size: 16px;
+        cursor: pointer;
+        
+        &_Content{
+            outline: none;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            display: flex;
+            gap: 25px;
+            
+            &_Left{
+                display: flex;
+                align-items: center;
+                width: 150px;
+                
+                &_Icon {
+                    display: flex;
+                    margin-right: 28px;
+                }
+                
+                & span {
+                    font-size: 15px;
+                    &:hover {
+                        color: #0061f2;
+                    }
+                }
+            }
+        }
+        &_Symbol{
+            display: flex;
+            width: 100%;
+            justify-content: flex-end;
+        }
+    }
 
-        &_Icon {
+    &_Collapse {
+        font-size: 16px;
+        padding: 10px 0px 10px 14px;
+        cursor: pointer;    
+            
+        &_Tab {
+            display: flex;
             align-items: center;
-            justify-content: flex-start;
-            margin-right: 16px;
-        }
+            border-left: 1px rgba(128, 128, 128, 0.2) solid;
+            padding: 5px 0px 11px 16px;
 
-        &_Arrow {
-            margin-left: auto;
+            & span {
+                padding-left: 18px;
+
+                &:hover {
+                    color: #0061f2;
+                }
+            }
+
+            &_Status {
+            margin-left: 50px;
+            padding: 3px;
+            font-size: 12px;
+            background-color: rgba(218, 231, 251, 1);
+            border-radius: 10px;
+            color: #0061f2;
         }
+        }      
+    }
     }
 
     &_Footer {
         padding: 0px 12px;
-        box-sizing: border-box;
         height: 80px;
         background-color: rgba(33, 40, 50, 0.05);
         display: flex;
         align-items: center;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
         overflow: hidden;
-        z-index: 20;
+        box-sizing: border-box;
 
         &_Container {
             display: block;
-            white-space: nowrap;
 
             &_Sub {
                 color: #212832;

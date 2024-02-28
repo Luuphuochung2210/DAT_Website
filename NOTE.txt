@@ -78,7 +78,7 @@ Sử dụng useState để style dưới thẻ elements.
         transform: docs ? "rotate(90deg)" : null, transition: '0.2s ease-in-out'}}>
         <MdKeyboardArrowRight
             color="grey"
-            size={16}/>
+            size={18}/>
     </div>
 
 
@@ -118,7 +118,7 @@ Click Outside để thoát DropDown của a Lộc
         ---Content---
         
     <button className="DAT_Head_Right" onClick={() => setAlert(!alert)} ref={alert_icon}>
-        <IoIosNotificationsOutline color="grey" size={16} />
+        <IoIosNotificationsOutline color="grey" size={18} />
     </button>
 
     <div className="DAT_Head_Notification" style={{ display: alert ? "block" : "none" }} ref={alert_content}

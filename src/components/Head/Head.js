@@ -109,7 +109,7 @@ export default function Head() {
     return (
         <div className="DAT_Head">
             <button className="DAT_Head_Left" onClick={() => { handleMenu() }}>
-                <MdOutlineMenu size={16} color="grey" />
+                <MdOutlineMenu size={18} color="grey" />
             </button>
 
             <div className="DAT_Head_Logo">
@@ -130,17 +130,17 @@ export default function Head() {
                 }}>
                     <MdKeyboardArrowRight
                         color="grey"
-                        size={16}
+                        size={18}
                     />
                 </div>
             </button>
 
             <button className="DAT_Head_Right" onClick={() => (handleAlert())}>
-                <IoIosNotificationsOutline color="grey" size={16} />
+                <IoIosNotificationsOutline color="grey" size={18} />
             </button>
 
             <button className="DAT_Head_Right" onClick={() => { handleMail() }} >
-                <CiMail color="grey" size={16} />
+                <CiMail color="grey" size={18} />
             </button>
 
             <button className="DAT_Head_Ava" onClick={() => { handleAva() }} >
@@ -195,7 +195,7 @@ export default function Head() {
             {alert && (<div className="DAT_Head_Notification" ref={dropdownRef}>
                 <div className="DAT_Head_Notification_Card">
                     <div className="DAT_Head_Notification_Card_Head">
-                        <IoIosNotificationsOutline color="white" size={16} />
+                        <IoIosNotificationsOutline color="white" size={18} />
                         <span> &nbsp;Alerts Center </span>
                     </div>
                     <a href="#!" className="DAT_Head_Notification_Card_Body">

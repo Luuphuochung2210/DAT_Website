@@ -70,7 +70,11 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0.15rem 1.75rem 0 rgba(33, 40, 50, 0.15);
-
+            &:hover {
+                transform: translateY(-0.5rem);
+                transition: 0.25s ease-in-out;
+                box-shadow: 0 0.5rem 2rem 0 rgba(33, 40, 50, 0.25);
+            }
             &_Card {
                 display: flex;
                 align-items: center;

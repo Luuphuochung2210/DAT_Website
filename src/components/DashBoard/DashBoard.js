@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
+import { PieChart, Pie, Cell } from 'recharts';
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import "./DashBoard.scss"
 import { FiActivity } from "react-icons/fi";
 import { BsBoxSeam } from "react-icons/bs";
@@ -162,8 +162,8 @@ export default function DashBoard() {
                                             }}
                                         >
                                             <CartesianGrid strokeDasharray="3 3" />
-                                            {/* <XAxis dataKey="name" axisLine={false} tickLine={false} />
-                                            <YAxis unit='$' axisLine={false} tickLine={false} /> */}
+                                            <XAxis dataKey="name" axisLine={false} tickLine={false} />
+                                            <YAxis unit='$' axisLine={false} tickLine={false} />
                                             <Tooltip />
                                             <Area type="monotone" dataKey="Earnings" stroke="#0061f2" strokeWidth={2.5} fill="#dae7fb " unit='$' dot={{ stroke: '#0061f2  ', strokeWidth: 8, r: 2, strokeDasharray: '' }} />
                                         </AreaChart>
