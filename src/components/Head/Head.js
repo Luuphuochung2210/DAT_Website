@@ -14,6 +14,7 @@ import { CiSettings } from "react-icons/ci";
 import { FiBook } from "react-icons/fi";
 import { RiCodeFill } from "react-icons/ri";
 import { IoDocumentTextOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 export default function Head() {
     const [docs, setDocs] = useState(false);
@@ -112,9 +113,11 @@ export default function Head() {
                 <MdOutlineMenu size={18} color="grey" />
             </button>
 
-            <div className="DAT_Head_Logo">
-                DAT GROUP
-            </div>
+            <Link to="/" style={{ textDecoration: 'none', color: 'black' }}>
+                <div className="DAT_Head_Logo">
+                    DAT GROUP
+                </div>
+            </Link>
             <div className="DAT_Head_Center">
                 <div className="DAT_Head_Center_Search">
                     <input placeholder="Search.."

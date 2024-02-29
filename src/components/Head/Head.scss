@@ -39,18 +39,17 @@
     }
 
     &_Logo {
-        padding: 5px 16px 5px 8px;
+        padding: 9px 16px 5px 10px;
         display: flex;
         align-items: center;
         justify-content: flex-start;
         font-size: 16px;
         font-weight: 750;
-        min-width: 192px;
+        min-width: 166px;
     }
 
     &_Center {
         flex: 6;
-        padding: 10px;
         display: flex;
         align-items: center;
         justify-content: flex-start;
@@ -65,7 +64,7 @@
             font-weight: 200;
             background-color: #EEF2F8;
             border: none;
-            border-radius: 0.35rem;
+            border-radius: 10px;
             transition: box-shadow 0.15s ease-in-out;
 
             &:focus-within {

@@ -9,6 +9,7 @@ import { FiLayout } from "react-icons/fi";
 import { FiTool } from "react-icons/fi";
 import { LuBarChart } from "react-icons/lu";
 import { CiFilter } from "react-icons/ci";
+import { Link, NavLink } from 'react-router-dom';
 
 export default function Sidebar() {
   const [board, setBoard] = useState(true);
@@ -126,24 +127,33 @@ export default function Sidebar() {
           <button className='DAT_Sidebar_Center_Tab_Content'
             onClick={() => { showBoard() }}>
 
-            <div className='DAT_Sidebar_Center_Tab_Content_Left'>
-              <div className='DAT_Sidebar_Center_Tab_Content_Left_Icon'>
-                <FiActivity color="grey" size={18} />
+            <NavLink to="/" style={({ isActive }) => ({
+              textDecoration: 'none',
+              color: isActive ? '#0061f2' : 'black',
+              fontWeight: isActive ? 'bold' : 'normal',
+            })}>
+              <div className='DAT_Sidebar_Center_Tab_Content_Left'>
+                <div className='DAT_Sidebar_Center_Tab_Content_Left_Icon'>
+                  <FiActivity color="grey" size={18} />
+                </div>
+                <span style={{
+                  color: board ? '#0061f2' : 'black',
+                  fontWeight: board ? 'bold' : 'normal',
+                }}> DashBoard </span>
               </div>
-              <span>DashBoard</span>
-            </div>
-
-            <div className='DAT_Sidebar_Center_Tab_Content_Symbol' style={{
-              transform: board ? "rotate(90deg)" : null, transition: '0.2s ease-in-out'
-            }}>
-              <MdKeyboardArrowRight color="grey" size={18} />
-            </div>
+            </NavLink>
           </button>
         </div>
-
-        {board && (<div className='DAT_Sidebar_Center_Collapse'>
+        {/* DROP DOWN 3 ITEM Nếu cần */}
+        {/* {board && (<div className='DAT_Sidebar_Center_Collapse'>
           <div className='DAT_Sidebar_Center_Collapse_Tab'>
-            <span> Default </span>
+            <NavLink to="/dashboard/default" style={({ isActive }) => ({
+              textDecoration: 'none',
+              color: isActive ? '#0061f2' : 'black',
+              fontWeight: isActive ? 'bold' : 'normal',
+            })}>
+              <span> Default </span>
+            </NavLink>
             <div className='DAT_Sidebar_Center_Collapse_Tab_Status'>
               Updated
             </div>
@@ -155,7 +165,7 @@ export default function Sidebar() {
           <div className='DAT_Sidebar_Center_Collapse_Tab'>
             <span> Affiliate </span>
           </div>
-        </div>)}
+        </div>)} */}
 
         {/* PAGES */}
         <div className='DAT_Sidebar_Center_Tab'>
@@ -166,8 +176,12 @@ export default function Sidebar() {
               <div className='DAT_Sidebar_Center_Tab_Content_Left_Icon'>
                 <CiGrid41 color="grey" size={18} />
               </div>
-              <span>Pages</span>
+              <span style={{
+                color: page ? '#0061f2' : 'black',
+                fontWeight: page ? 'bold' : 'normal',
+              }}>Pages</span>
             </div>
+
             <div className='DAT_Sidebar_Center_Tab_Content_Symbol' style={{
               transform: page ? "rotate(90deg)" : null, transition: '0.2s ease-in-out'
             }}>
@@ -177,13 +191,26 @@ export default function Sidebar() {
         </div>
 
         {page && (<div className='DAT_Sidebar_Center_Collapse'>
-          <div className='DAT_Sidebar_Center_Collapse_Tab'>
-            <span> Account </span>
-          </div>
+          <NavLink to="/pages/account" style={({ isActive }) => ({
+            textDecoration: 'none',
+            color: isActive ? '#0061f2' : 'black',
+            fontWeight: isActive ? 'bold' : 'normal',
+          })}>
+            <div className='DAT_Sidebar_Center_Collapse_Tab'>
+              <span> Account </span>
+            </div>
+          </NavLink>
 
-          <div className='DAT_Sidebar_Center_Collapse_Tab'>
-            <span> Authenticate </span>
-          </div>
+          <NavLink to="/pages/authenticate" style={({ isActive }) => ({
+            textDecoration: 'none',
+            color: isActive ? '#0061f2' : 'black',
+            fontWeight: isActive ? 'bold' : 'normal',
+          })}>
+            <div className='DAT_Sidebar_Center_Collapse_Tab'>
+              <span> Authenticate </span>
+            </div>
+          </NavLink>
+
           <div className='DAT_Sidebar_Center_Collapse_Tab'>
             <span> Error </span>
           </div>
